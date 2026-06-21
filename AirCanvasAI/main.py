@@ -26,7 +26,7 @@ engine = DrawingEngine()
 toolbar = Toolbar()
 
 # Window setup
-window_name = "🎨 Air Canvas AI - Press Q to Quit"
+window_name = "Air Canvas AI"
 cv2.namedWindow(window_name, cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO)
 cv2.resizeWindow(window_name, 1280, 820)
 
