@@ -10,8 +10,8 @@ from core.toolbar import Toolbar
 cap = cv2.VideoCapture(0)
 
 # Set camera resolution for larger window
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 if not cap.isOpened():
     print("❌ Camera not found!")
@@ -28,7 +28,7 @@ toolbar = Toolbar()
 # Window setup
 window_name = "Air Canvas AI"
 cv2.namedWindow(window_name, cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO)
-cv2.resizeWindow(window_name, 1280, 820)
+cv2.resizeWindow(window_name, 640, 480)
 
 xp, yp = 0, 0
 fps_counter = 0
@@ -69,7 +69,7 @@ while True:
             x, y = tip
 
             # Toolbar Click
-            if y < 150:
+            if y < 80:
 
                 action = toolbar.check_click(x, y)
 
@@ -150,25 +150,26 @@ while True:
     cv2.putText(
         output,
         f"{icon} {gesture_display}",
-        (20, 185),
+        (20, 95),
         cv2.FONT_HERSHEY_SIMPLEX,
-        0.9,
+        0.45,
         (0, 188, 212),
-        2
+        1,
+        cv2.LINE_AA
     )
     
     # Show current color
     cv2.putText(
         output,
         "Color:",
-        (20, 215),
+        (20, 125),
         cv2.FONT_HERSHEY_SIMPLEX,
-        0.6,
+        0.45,
         (150, 150, 150),
         1
     )
-    cv2.circle(output, (100, 210), 8, engine.current_color, -1)
-    cv2.circle(output, (100, 210), 8, (0, 188, 212), 2)
+    cv2.circle(output, (100, 125), 8, engine.current_color, -1)
+    cv2.circle(output, (100, 125), 8, (0, 188, 212), 2)
 
     # Add help text at bottom
     help_text = "Click colors to change | Press Q or close window to exit"
